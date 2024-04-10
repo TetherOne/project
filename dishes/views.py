@@ -9,7 +9,7 @@ from dishes.serializers import DishSerializer, DishInfoSerializer
 class DishViewSet(ModelViewSet):
 
     serializer_class = DishSerializer
-    queryset = Dish.objects.select_related('dishinfo').all()
+    queryset = Dish.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [
         "name",
@@ -30,6 +30,7 @@ class DishInfoViewSet(ModelViewSet):
         "carbohydrates",
         "fats",
         "kilocalories_per_100_grams",
+        "dish"
     ]
 
 

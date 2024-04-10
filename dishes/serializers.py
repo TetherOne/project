@@ -10,10 +10,6 @@ class DishInfoSerializer(serializers.ModelSerializer):
 
 
 class DishSerializer(serializers.ModelSerializer):
-
-    dishinfo = DishInfoSerializer()
-
     class Meta:
         model = Dish
         fields = '__all__'
-
