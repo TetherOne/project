@@ -3,8 +3,9 @@ from rest_framework import serializers
 
 from django.contrib.auth import get_user_model
 
-from profiles.models import AdminProfile, ClientProfile
-from profiles.serializers import AdminSerializer, ClientSerializer
+from profiles.models import ClientProfile
+from profiles.serializers import ClientSerializer
+
 
 
 class CurrentUserSerializer(serializers.ModelSerializer):
@@ -25,15 +26,12 @@ class CurrentUserSerializer(serializers.ModelSerializer):
         Getting a profile for the current
         authenticated user
         """
+
         try:
-            admin_profile = obj.admin_profile
-            serializer = AdminSerializer(admin_profile)
-        except AdminProfile.DoesNotExist:
-            try:
-                client_profile = obj.client_profile
-                serializer = ClientSerializer(client_profile)
-            except ClientProfile.DoesNotExist:
-                return None
+            client_profile = obj.client_profile
+            serializer = ClientSerializer(client_profile)
+        except ClientProfile.DoesNotExist:
+            return None
         return serializer.data
 
     def to_representation(self, instance):

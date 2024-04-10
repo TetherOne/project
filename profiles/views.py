@@ -1,16 +1,9 @@
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.viewsets import ModelViewSet
 
-from profiles.models import AdminProfile, ClientProfile
-from profiles.serializers import ClientSerializer
-
-
-class AdminViewSet(ModelViewSet):
-
-    serializer_class = ClientSerializer
-    queryset = AdminProfile.objects.all()
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ["user"]
+from authentication.models import CustomUser
+from profiles.models import ClientProfile
+from profiles.serializers import ClientSerializer, UserRegistrationSerializer
 
 
 class ClientViewSet(ModelViewSet):
@@ -21,3 +14,10 @@ class ClientViewSet(ModelViewSet):
     filterset_fields = ["user"]
 
 
+class UserViewSet(ModelViewSet):
+
+    queryset = CustomUser.objects.all()
+    serializer_class = UserRegistrationSerializer
+
+    def perform_create(self, serializer):
+        serializer.save()
