@@ -6,9 +6,9 @@ from celery import Celery
 import os
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "course_system.settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "menu.settings")
 
-app = Celery("course_system")
+app = Celery("menu")
 
 app.config_from_object("django.conf:settings", namespace="CELERY")
 
