@@ -1,0 +1,32 @@
+/venv/
+/venv
+venv/
+
+/venv library root
+/venv library root/
+venv library root/
+
+
+__pycache__/
+
+/idea/
+/idea
+idea/
+
+/.idea/
+/.idea
+.idea/
+/front_vue/.vscode/
+/front_vue/node_modules/
+
+/front/.vscode/
+/front/node_modules/
+
+.pytest_cache/
+/.pytest_cache/
+.pytest_cache
+
+.env
+.env/
+/.env/
+/.env
