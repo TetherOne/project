@@ -1,7 +1,15 @@
+from authentication.views import MyPasswordResetCompleteView
+from authentication.views import MyPasswordResetConfirmView
+from authentication.views import MyPasswordResetDoneView
+from authentication.views import MyPasswordResetView
+from authentication.views import CurrentUserView
+from authentication.views import RegisterView
+from authentication.views import logout_view
+from authentication.views import MyLoginView
+from authentication.views import AboutMeView
+
 from django.urls import path
 
-from authentication.views import CurrentUserView, MyPasswordResetCompleteView, MyPasswordResetConfirmView, \
-    MyPasswordResetDoneView, MyPasswordResetView, RegisterView, AboutMeView, logout_view, MyLoginView
 
 app_name = "authentication"
 
