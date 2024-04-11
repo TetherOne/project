@@ -29,7 +29,8 @@ class Migration(migrations.Migration):
                 (
                     "dish",
                     models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, to="dishes.dish"
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="dishes.dish",
                     ),
                 ),
                 (

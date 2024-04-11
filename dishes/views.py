@@ -22,10 +22,13 @@ class PermissionViewSet(ModelViewSet):
         "destroy": [IsAdminUser],
     }
 
-    def get_permissions(self):
+    def get_permissions(self) -> list:
         return [
             permission()
-            for permission in self.permission_classes_by_action.get(self.action, [])
+            for permission in self.permission_classes_by_action.get(
+                self.action,
+                [],
+            )
         ]
 
 

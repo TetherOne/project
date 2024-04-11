@@ -19,7 +19,9 @@ class Migration(migrations.Migration):
             model_name="dishinfo",
             name="dish",
             field=models.OneToOneField(
-                default=0, on_delete=django.db.models.deletion.CASCADE, to="dishes.dish"
+                default=0,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="dishes.dish",
             ),
             preserve_default=False,
         ),

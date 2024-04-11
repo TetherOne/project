@@ -32,6 +32,7 @@ routers.register(
     DishImagesViewSet,
 )
 
+
 urlpatterns = [
     path("", include(routers.urls)),
 ]

@@ -33,7 +33,9 @@ class Migration(migrations.Migration):
             model_name="dishimages",
             name="dish_images",
             field=models.FileField(
-                blank=True, null=True, upload_to=dishes.models.dish_images_file_path
+                blank=True,
+                null=True,
+                upload_to=dishes.models.dish_images_file_path,
             ),
         ),
     ]

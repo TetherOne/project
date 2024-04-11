@@ -6,7 +6,10 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("dishes", "0007_alter_dishinfo_carbohydrates_alter_dishinfo_fats_and_more"),
+        (
+            "dishes",
+            "0007_alter_dishinfo_carbohydrates_alter_dishinfo_fats_and_more",
+        ),
     ]
 
     operations = [
@@ -27,6 +30,10 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="dish",
             name="preview",
-            field=models.ImageField(blank=True, null=True, upload_to="dishes-preview/"),
+            field=models.ImageField(
+                blank=True,
+                null=True,
+                upload_to="dishes-preview/",
+            ),
         ),
     ]
