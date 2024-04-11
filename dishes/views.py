@@ -2,8 +2,8 @@ from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.viewsets import ModelViewSet
 
-from dishes.models import Dish, DishInfo
-from dishes.serializers import DishSerializer, DishInfoSerializer
+from dishes.models import Dish, DishInfo, DishImages, Category
+from dishes.serializers import DishSerializer, DishInfoSerializer, DishImagesSerializer, DishCategorySerializer
 
 
 class DishViewSet(ModelViewSet):
@@ -34,3 +34,17 @@ class DishInfoViewSet(ModelViewSet):
     ]
 
 
+class DishCategoryViewSet(ModelViewSet):
+
+    serializer_class = DishCategorySerializer
+    queryset = Category.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = [
+        "category",
+    ]
+
+
+class DishImagesViewSet(ModelViewSet):
+
+    serializer_class = DishImagesSerializer
+    queryset = DishImages.objects.all()

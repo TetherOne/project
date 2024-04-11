@@ -1,7 +1,7 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 
-from dishes.views import DishViewSet, DishInfoViewSet
+from dishes.views import DishViewSet, DishInfoViewSet, DishCategoryViewSet, DishImagesViewSet
 
 app_name = "dishes"
 
@@ -14,8 +14,16 @@ routers.register(
     DishViewSet,
 )
 routers.register(
-    'dishes_info',
+    'dish_info',
     DishInfoViewSet,
+)
+routers.register(
+    'dish_categories',
+    DishCategoryViewSet,
+)
+routers.register(
+    'dish_images',
+    DishImagesViewSet,
 )
 
 urlpatterns = [

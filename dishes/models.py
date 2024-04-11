@@ -24,8 +24,12 @@ class Dish(models.Model):
 
     name = models.CharField(max_length=255)
     description = models.TextField()
-    category = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=0)
+    category_id = models.ForeignKey(
+        'Category',
+        on_delete=models.CASCADE,
+        related_name="dishes",
+    )
     preview = models.ImageField(
         null=True,
         upload_to="dishes-preview/",
@@ -53,16 +57,13 @@ def dish_images_file_path(
     """
     For saving additional dish images
     """
-    pass
-    # valid_filename = re.sub(
-    #     r"[\\/*?:\"<>|]",
-    #     "_",
-    #     filename,
-    # )
-    # return (
-    #     f"lessons/{instance.lesson.module.course.course_name}/"
-    #     f"{valid_filename}/{filename}"
-    # )
+    valid_filename = re.sub(
+        r"[\\/*?:\"<>|]",
+        "_",
+        filename,
+    )
+    return f"dishes/{instance.dish.name}/images/{valid_filename}"
+
 
 
 class DishImages(models.Model):
@@ -77,3 +78,8 @@ class DishImages(models.Model):
         upload_to=dish_images_file_path,
         blank=True,
     )
+
+
+class Category(models.Model):
+
+    name = models.CharField(max_length=255)
