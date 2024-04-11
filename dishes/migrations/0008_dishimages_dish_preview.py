@@ -6,19 +6,27 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dishes', '0007_alter_dishinfo_carbohydrates_alter_dishinfo_fats_and_more'),
+        ("dishes", "0007_alter_dishinfo_carbohydrates_alter_dishinfo_fats_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='DishImages',
+            name="DishImages",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='dish',
-            name='preview',
-            field=models.ImageField(blank=True, null=True, upload_to='dishes-preview/'),
+            model_name="dish",
+            name="preview",
+            field=models.ImageField(blank=True, null=True, upload_to="dishes-preview/"),
         ),
     ]

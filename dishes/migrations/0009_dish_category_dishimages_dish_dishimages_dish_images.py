@@ -8,25 +8,32 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dishes', '0008_dishimages_dish_preview'),
+        ("dishes", "0008_dishimages_dish_preview"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='dish',
-            name='category',
+            model_name="dish",
+            name="category",
             field=models.CharField(default=0, max_length=255),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='dishimages',
-            name='dish',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, related_name='dish_images', to='dishes.dish'),
+            model_name="dishimages",
+            name="dish",
+            field=models.ForeignKey(
+                default=0,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="dish_images",
+                to="dishes.dish",
+            ),
             preserve_default=False,
         ),
         migrations.AddField(
-            model_name='dishimages',
-            name='dish_images',
-            field=models.FileField(blank=True, null=True, upload_to=dishes.models.dish_images_file_path),
+            model_name="dishimages",
+            name="dish_images",
+            field=models.FileField(
+                blank=True, null=True, upload_to=dishes.models.dish_images_file_path
+            ),
         ),
     ]

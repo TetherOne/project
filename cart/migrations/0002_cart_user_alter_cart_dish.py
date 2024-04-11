@@ -7,21 +7,27 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('cart', '0001_initial'),
-        ('dishes', '0011_category_remove_dish_category_dish_category_id'),
-        ('profiles', '0003_remove_clientprofile_is_admin'),
+        ("cart", "0001_initial"),
+        ("dishes", "0011_category_remove_dish_category_dish_category_id"),
+        ("profiles", "0003_remove_clientprofile_is_admin"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='cart',
-            name='user',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, to='profiles.clientprofile'),
+            model_name="cart",
+            name="user",
+            field=models.ForeignKey(
+                default=0,
+                on_delete=django.db.models.deletion.CASCADE,
+                to="profiles.clientprofile",
+            ),
             preserve_default=False,
         ),
         migrations.AlterField(
-            model_name='cart',
-            name='dish',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='dishes.dish'),
+            model_name="cart",
+            name="dish",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE, to="dishes.dish"
+            ),
         ),
     ]

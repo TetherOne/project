@@ -7,13 +7,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dishes', '0009_dish_category_dishimages_dish_dishimages_dish_images'),
+        ("dishes", "0009_dish_category_dishimages_dish_dishimages_dish_images"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='dishimages',
-            name='dish_images',
-            field=models.ImageField(blank=True, null=True, upload_to=dishes.models.dish_images_file_path),
+            model_name="dishimages",
+            name="dish_images",
+            field=models.ImageField(
+                blank=True, null=True, upload_to=dishes.models.dish_images_file_path
+            ),
         ),
     ]

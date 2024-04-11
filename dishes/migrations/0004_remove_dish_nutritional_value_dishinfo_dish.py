@@ -7,18 +7,20 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dishes', '0003_dishinfo_dish_nutritional_value'),
+        ("dishes", "0003_dishinfo_dish_nutritional_value"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='dish',
-            name='nutritional_value',
+            model_name="dish",
+            name="nutritional_value",
         ),
         migrations.AddField(
-            model_name='dishinfo',
-            name='dish',
-            field=models.OneToOneField(default=0, on_delete=django.db.models.deletion.CASCADE, to='dishes.dish'),
+            model_name="dishinfo",
+            name="dish",
+            field=models.OneToOneField(
+                default=0, on_delete=django.db.models.deletion.CASCADE, to="dishes.dish"
+            ),
             preserve_default=False,
         ),
     ]

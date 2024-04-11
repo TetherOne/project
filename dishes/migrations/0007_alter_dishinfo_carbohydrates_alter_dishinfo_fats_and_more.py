@@ -6,33 +6,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dishes', '0006_alter_dishinfo_dish'),
+        ("dishes", "0006_alter_dishinfo_dish"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='dishinfo',
-            name='carbohydrates',
+            model_name="dishinfo",
+            name="carbohydrates",
             field=models.FloatField(blank=True, default=0, null=True),
         ),
         migrations.AlterField(
-            model_name='dishinfo',
-            name='fats',
+            model_name="dishinfo",
+            name="fats",
             field=models.FloatField(blank=True, default=0, null=True),
         ),
         migrations.AlterField(
-            model_name='dishinfo',
-            name='kilocalories_per_100_grams',
+            model_name="dishinfo",
+            name="kilocalories_per_100_grams",
             field=models.FloatField(blank=True, default=0, null=True),
         ),
         migrations.AlterField(
-            model_name='dishinfo',
-            name='proteins',
+            model_name="dishinfo",
+            name="proteins",
             field=models.FloatField(blank=True, default=0, null=True),
         ),
         migrations.AlterField(
-            model_name='dishinfo',
-            name='weight',
+            model_name="dishinfo",
+            name="weight",
             field=models.FloatField(blank=True, default=0, null=True),
         ),
     ]

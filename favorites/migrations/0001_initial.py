@@ -9,17 +9,36 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('dishes', '0011_category_remove_dish_category_dish_category_id'),
-        ('profiles', '0003_remove_clientprofile_is_admin'),
+        ("dishes", "0011_category_remove_dish_category_dish_category_id"),
+        ("profiles", "0003_remove_clientprofile_is_admin"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Favorites',
+            name="Favorites",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('dish', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='dishes.dish')),
-                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='profiles.clientprofile')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "dish",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE, to="dishes.dish"
+                    ),
+                ),
+                (
+                    "user",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="profiles.clientprofile",
+                    ),
+                ),
             ],
         ),
     ]

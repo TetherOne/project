@@ -7,25 +7,38 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dishes', '0010_alter_dishimages_dish_images'),
+        ("dishes", "0010_alter_dishimages_dish_images"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Category',
+            name="Category",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
             ],
         ),
         migrations.RemoveField(
-            model_name='dish',
-            name='category',
+            model_name="dish",
+            name="category",
         ),
         migrations.AddField(
-            model_name='dish',
-            name='category_id',
-            field=models.ForeignKey(default=0, on_delete=django.db.models.deletion.CASCADE, related_name='dishes', to='dishes.category'),
+            model_name="dish",
+            name="category_id",
+            field=models.ForeignKey(
+                default=0,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="dishes",
+                to="dishes.category",
+            ),
             preserve_default=False,
         ),
     ]

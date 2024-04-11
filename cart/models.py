@@ -11,8 +11,6 @@ class Cart(models.Model):
         on_delete=models.CASCADE,
     )
     profile = models.ForeignKey(
-        'profiles.ClientProfile',
+        "profiles.ClientProfile",
         on_delete=models.CASCADE,
     )
-
-

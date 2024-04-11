@@ -6,4 +6,4 @@ from favorites.models import Favorites
 class FavoritesSerializer(serializers.ModelSerializer):
     class Meta:
         model = Favorites
-        fields = '__all__'
+        fields = "__all__"

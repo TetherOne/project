@@ -9,16 +9,31 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('dishes', '0011_category_remove_dish_category_dish_category_id'),
+        ("dishes", "0011_category_remove_dish_category_dish_category_id"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Cart',
+            name="Cart",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('count', models.PositiveIntegerField(default=1)),
-                ('dish', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='cart', to='dishes.dish')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("count", models.PositiveIntegerField(default=1)),
+                (
+                    "dish",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="cart",
+                        to="dishes.dish",
+                    ),
+                ),
             ],
         ),
     ]

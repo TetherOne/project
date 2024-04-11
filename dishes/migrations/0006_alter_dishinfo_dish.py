@@ -7,13 +7,15 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('dishes', '0005_alter_dishinfo_dish'),
+        ("dishes", "0005_alter_dishinfo_dish"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='dishinfo',
-            name='dish',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='dishes.dish'),
+            model_name="dishinfo",
+            name="dish",
+            field=models.OneToOneField(
+                on_delete=django.db.models.deletion.CASCADE, to="dishes.dish"
+            ),
         ),
     ]

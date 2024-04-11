@@ -16,14 +16,17 @@ from dishes.models import Dish
 
 class PermissionViewSet(ModelViewSet):
     permission_classes_by_action = {
-        'create': [IsAdminUser],
-        'update': [IsAdminUser],
-        'partial_update': [IsAdminUser],
-        'destroy': [IsAdminUser],
+        "create": [IsAdminUser],
+        "update": [IsAdminUser],
+        "partial_update": [IsAdminUser],
+        "destroy": [IsAdminUser],
     }
 
     def get_permissions(self):
-        return [permission() for permission in self.permission_classes_by_action.get(self.action, [])]
+        return [
+            permission()
+            for permission in self.permission_classes_by_action.get(self.action, [])
+        ]
 
 
 class DishViewSet(PermissionViewSet, ModelViewSet):
