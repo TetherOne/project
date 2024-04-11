@@ -1,7 +1,7 @@
-from rest_framework import serializers
-
 from authentication.models import CustomUser
 from profiles.models import ClientProfile
+
+from rest_framework import serializers
 
 
 class ClientSerializer(serializers.ModelSerializer):
@@ -11,7 +11,6 @@ class ClientSerializer(serializers.ModelSerializer):
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
-
 
     class Meta:
 
@@ -28,9 +27,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         """
         For creating a user profile
         """
-        is_teacher = validated_data.pop("is_teacher", False)
         user = CustomUser.objects.create_user(**validated_data)
-
         ClientProfile.objects.create(user=user)
 
         return user

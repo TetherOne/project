@@ -1,11 +1,12 @@
 from django.contrib.auth.models import AnonymousUser
-from rest_framework import serializers
+
+from profiles.serializers import ClientSerializer
 
 from django.contrib.auth import get_user_model
 
 from profiles.models import ClientProfile
-from profiles.serializers import ClientSerializer
 
+from rest_framework import serializers
 
 
 class CurrentUserSerializer(serializers.ModelSerializer):
@@ -26,7 +27,6 @@ class CurrentUserSerializer(serializers.ModelSerializer):
         Getting a profile for the current
         authenticated user
         """
-
         try:
             client_profile = obj.client_profile
             serializer = ClientSerializer(client_profile)
