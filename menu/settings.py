@@ -10,25 +10,28 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+from config import RECAPTCHA_PRIVATE_KEY
+from config import RECAPTCHA_PUBLIC_KEY
+
+from config import DJANGO_SECRET_KEY
+
+from config import EMAIL_HOST_PASSWORD
+from config import EMAIL_HOST_USER
+from config import EMAIL_USE_SSL
+from config import EMAIL_PORT
+from config import EMAIL_HOST
+
+from config import DB_PASSWORD
+from config import DB_HOST
+from config import DB_PORT
+from config import DB_NAME
+from config import DB_USER
+
+from config import REDIS_HOST
+from config import REDIS_PORT
+
 from pathlib import Path
 
-from config import (
-    REDIS_HOST,
-    REDIS_PORT,
-    DB_NAME,
-    DB_USER,
-    DB_PASSWORD,
-    DB_HOST,
-    DB_PORT,
-)
-from config import (
-    EMAIL_HOST,
-    EMAIL_PORT,
-    EMAIL_HOST_USER,
-    EMAIL_HOST_PASSWORD,
-    EMAIL_USE_SSL,
-)
-from config import RECAPTCHA_PRIVATE_KEY, RECAPTCHA_PUBLIC_KEY
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,7 +41,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-l&doe=*rm%q96!xo3k*c@zq+m(*n0j9id3*(v#i0vew$vz25an"
+SECRET_KEY = f"{DJANGO_SECRET_KEY}"
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -117,20 +120,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
-AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
-]
+AUTH_PASSWORD_VALIDATORS = []
 
 
 # Internationalization
