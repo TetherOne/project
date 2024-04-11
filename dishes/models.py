@@ -1,3 +1,5 @@
+import re
+
 from django.db import models
 
 
@@ -22,6 +24,7 @@ class Dish(models.Model):
 
     name = models.CharField(max_length=255)
     description = models.TextField()
+    category = models.CharField(max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=0)
     preview = models.ImageField(
         null=True,
@@ -42,5 +45,35 @@ class Dish(models.Model):
         return f'{self.name} - {self.price}'
 
 
-class DishImages(models.Model):
+
+def dish_images_file_path(
+        instance: "Dish",
+        filename,
+) -> str:
+    """
+    For saving additional dish images
+    """
     pass
+    # valid_filename = re.sub(
+    #     r"[\\/*?:\"<>|]",
+    #     "_",
+    #     filename,
+    # )
+    # return (
+    #     f"lessons/{instance.lesson.module.course.course_name}/"
+    #     f"{valid_filename}/{filename}"
+    # )
+
+
+class DishImages(models.Model):
+
+    dish = models.ForeignKey(
+        Dish,
+        on_delete=models.CASCADE,
+        related_name="dish_images",
+    )
+    dish_images = models.ImageField(
+        null=True,
+        upload_to=dish_images_file_path,
+        blank=True,
+    )
