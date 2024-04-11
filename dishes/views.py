@@ -1,11 +1,12 @@
 from django_filters.rest_framework import DjangoFilterBackend
-
-from rest_framework.viewsets import ModelViewSet
+from rest_framework.permissions import IsAdminUser
 
 from dishes.serializers import DishCategorySerializer
 from dishes.serializers import DishImagesSerializer
 from dishes.serializers import DishInfoSerializer
 from dishes.serializers import DishSerializer
+
+from rest_framework.viewsets import ModelViewSet
 
 from dishes.models import DishImages
 from dishes.models import Category
@@ -13,7 +14,19 @@ from dishes.models import DishInfo
 from dishes.models import Dish
 
 
-class DishViewSet(ModelViewSet):
+class PermissionViewSet(ModelViewSet):
+    permission_classes_by_action = {
+        'create': [IsAdminUser],
+        'update': [IsAdminUser],
+        'partial_update': [IsAdminUser],
+        'destroy': [IsAdminUser],
+    }
+
+    def get_permissions(self):
+        return [permission() for permission in self.permission_classes_by_action.get(self.action, [])]
+
+
+class DishViewSet(PermissionViewSet, ModelViewSet):
 
     serializer_class = DishSerializer
     queryset = Dish.objects.all()
@@ -27,7 +40,7 @@ class DishViewSet(ModelViewSet):
     ]
 
 
-class DishInfoViewSet(ModelViewSet):
+class DishInfoViewSet(PermissionViewSet, ModelViewSet):
 
     serializer_class = DishInfoSerializer
     queryset = DishInfo.objects.all()
@@ -41,7 +54,7 @@ class DishInfoViewSet(ModelViewSet):
     ]
 
 
-class DishCategoryViewSet(ModelViewSet):
+class DishCategoryViewSet(PermissionViewSet, ModelViewSet):
 
     serializer_class = DishCategorySerializer
     queryset = Category.objects.all()
@@ -51,7 +64,7 @@ class DishCategoryViewSet(ModelViewSet):
     ]
 
 
-class DishImagesViewSet(ModelViewSet):
+class DishImagesViewSet(PermissionViewSet, ModelViewSet):
 
     serializer_class = DishImagesSerializer
     queryset = DishImages.objects.all()
