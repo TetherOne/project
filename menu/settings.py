@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 
-from config import REDIS_HOST, REDIS_PORT
+from config import REDIS_HOST, REDIS_PORT, DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT
 from config import (
     EMAIL_HOST,
     EMAIL_PORT,
@@ -93,10 +93,15 @@ WSGI_APPLICATION = "menu.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': f'{DB_NAME}',
+        'USER': f'{DB_USER}',
+        'PASSWORD': f'{DB_PASSWORD}',
+        'HOST': f'{DB_HOST}',
+        'PORT': f'{DB_PORT}',
     }
 }
 
