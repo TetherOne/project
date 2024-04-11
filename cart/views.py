@@ -1,9 +1,10 @@
-from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
+
+from cart.serializers import CartSerializer
+
 from rest_framework import viewsets
 
 from cart.models import Cart
-from cart.serializers import CartSerializer
 
 
 class CartViewSet(viewsets.ModelViewSet):

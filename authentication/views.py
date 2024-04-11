@@ -1,19 +1,40 @@
-from django.contrib.auth import logout, login, authenticate
-from django.contrib.auth.views import LoginView, PasswordResetConfirmView, PasswordResetDoneView, PasswordResetView, \
-    PasswordResetCompleteView
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render, redirect
-from django.urls import reverse, reverse_lazy
-from django.views.generic import TemplateView, FormView
-from rest_framework import status
+from django.contrib.auth.views import PasswordResetCompleteView
+from django.contrib.auth.views import PasswordResetConfirmView
+from django.contrib.auth.views import PasswordResetDoneView
+from django.contrib.auth.views import PasswordResetView
+from django.contrib.auth.views import LoginView
+
+from authentication.serializers import CurrentUserSerializer
+
+from authentication.forms import CustomPasswordResetForm
+from authentication.forms import CustomUserCreationForm
+
+from django.views.generic import TemplateView
+from django.views.generic import FormView
+
+from django.contrib.auth import authenticate
+from django.contrib.auth import logout
+from django.contrib.auth import login
+
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import status
 
-from authentication.forms import CustomUserCreationForm, CustomPasswordResetForm
-from authentication.serializers import CurrentUserSerializer
+from django.shortcuts import redirect
+
+from django.http import HttpResponse
+from django.http import HttpRequest
+
+from django.urls import reverse_lazy
+from django.urls import reverse
 
 
 class CurrentUserView(APIView):
+    """
+    API для получения текущего
+    аутентифицированного пользователя
+    """
+
     def get(self, request):
         serializer = CurrentUserSerializer(request.user)
         return Response(

@@ -1,9 +1,16 @@
-from django.shortcuts import render
 from django_filters.rest_framework import DjangoFilterBackend
+
 from rest_framework.viewsets import ModelViewSet
 
-from dishes.models import Dish, DishInfo, DishImages, Category
-from dishes.serializers import DishSerializer, DishInfoSerializer, DishImagesSerializer, DishCategorySerializer
+from dishes.serializers import DishCategorySerializer
+from dishes.serializers import DishImagesSerializer
+from dishes.serializers import DishInfoSerializer
+from dishes.serializers import DishSerializer
+
+from dishes.models import DishImages
+from dishes.models import Category
+from dishes.models import DishInfo
+from dishes.models import Dish
 
 
 class DishViewSet(ModelViewSet):
@@ -30,7 +37,7 @@ class DishInfoViewSet(ModelViewSet):
         "carbohydrates",
         "fats",
         "kilocalories_per_100_grams",
-        "dish"
+        "dish",
     ]
 
 
