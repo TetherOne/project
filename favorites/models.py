@@ -1,3 +1,13 @@
 from django.db import models
 
-# Create your models here.
+
+class Favorites(models.Model):
+
+    profile = models.ForeignKey(
+        'profiles.ClientProfile',
+        on_delete=models.CASCADE,
+    )
+    dish = models.ForeignKey(
+        'dishes.Dish',
+        on_delete=models.CASCADE,
+    )

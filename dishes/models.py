@@ -1,6 +1,6 @@
-import re
-
 from django.db import models
+
+import re
 
 
 class DishInfo(models.Model):
@@ -15,7 +15,7 @@ class DishInfo(models.Model):
         default=0,
     )
     dish = models.OneToOneField(
-        'Dish',
+        "Dish",
         on_delete=models.CASCADE,
     )
 
@@ -26,7 +26,7 @@ class Dish(models.Model):
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=0)
     category_id = models.ForeignKey(
-        'Category',
+        "Category",
         on_delete=models.CASCADE,
         related_name="dishes",
     )
@@ -38,21 +38,21 @@ class Dish(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        Создание DishInfo после создания блюда
+        Creating DishInfo (information about a
+        dish: kcal, proteins, carbohydrates,
+        etc.) after creating a dish
         """
         super(Dish, self).save(*args, **kwargs)
-        if not hasattr(self, 'dishinfo'):
+        if not hasattr(self, "dishinfo"):
             DishInfo.objects.create(dish=self)
 
-
     def __str__(self):
-        return f'{self.name} - {self.price}'
-
+        return f"{self.name} - {self.price}"
 
 
 def dish_images_file_path(
-        instance: "Dish",
-        filename,
+    instance: "Dish",
+    filename,
 ) -> str:
     """
     For saving additional dish images
@@ -63,7 +63,6 @@ def dish_images_file_path(
         filename,
     )
     return f"dishes/{instance.dish.name}/images/{valid_filename}"
-
 
 
 class DishImages(models.Model):

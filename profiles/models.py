@@ -1,6 +1,6 @@
-from django.db import models
-
 from authentication.models import CustomUser
+
+from django.db import models
 
 
 class ClientProfile(models.Model):
@@ -17,4 +17,4 @@ class ClientProfile(models.Model):
     )
 
     def __str__(self):
-        return f'{self.name} {self.surname} {self.father_name}'
+        return f"{self.name} {self.surname} {self.father_name}"
