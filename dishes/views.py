@@ -48,3 +48,7 @@ class DishImagesViewSet(ModelViewSet):
 
     serializer_class = DishImagesSerializer
     queryset = DishImages.objects.all()
+    filter_backends = [DjangoFilterBackend]
+    filter_fields = [
+        "dish",
+    ]

@@ -29,6 +29,7 @@ urlpatterns = [
     path('api/v1/dishesapp/', include('dishes.urls')),
     path('api/v1/profilesapp/', include('profiles.urls')),
     path('api/v1/commentsapp/', include('comments.urls')),
+    path('api/v1/cartapp/', include('cart.urls')),
     path('api/v1/auth/', include('authentication.urls')),
 ]
 

@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     "django_recaptcha",
 
     'authentication.apps.AuthenticationConfig',
-    'basket.apps.BasketConfig',
+    'cart.apps.BasketConfig',
     'comments.apps.CommentsConfig',
     'dishes.apps.DishesConfig',
     'favorites.apps.FavoritesConfig',

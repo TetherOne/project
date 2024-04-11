@@ -34,12 +34,3 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         ClientProfile.objects.create(user=user)
 
         return user
-
-    # def to_representation(self, instance):
-    #     data = super().to_representation(instance)
-    #
-    #     if hasattr(instance, "teacher_profile"):
-    #         data["is_teacher"] = True
-    #     else:
-    #         data["is_teacher"] = False
-    #     return data
