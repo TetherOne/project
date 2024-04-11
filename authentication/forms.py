@@ -1,23 +1,22 @@
 from django.contrib.auth.tokens import default_token_generator
+
 from django.contrib.sites.shortcuts import get_current_site
 
 from django.contrib.auth.forms import PasswordResetForm
 from django.contrib.auth.forms import UserCreationForm
-from django_recaptcha.fields import ReCaptchaField
-from .tasks import send_email_to_reset_password_task
-from profiles.models import ClientProfile
 
+from .tasks import send_email_after_registration_task
 from .tasks import send_email_to_reset_password_task
 
 from django.utils.http import urlsafe_base64_encode
 
-from .tasks import send_email_after_registration_task
+from django_recaptcha.fields import ReCaptchaField
 
 from django.contrib.auth import get_user_model
 
 from django.utils.encoding import force_bytes
 
-
+from profiles.models import ClientProfile
 
 from .models import CustomUser
 
@@ -71,6 +70,7 @@ class CustomPasswordResetForm(PasswordResetForm):
     """
     Form for recovery password via mail
     """
+
     def send_mail(
         self,
         subject_template_name,

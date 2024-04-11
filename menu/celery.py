@@ -6,10 +6,16 @@ from celery import Celery
 import os
 
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "menu.settings")
+os.environ.setdefault(
+    "DJANGO_SETTINGS_MODULE",
+    "menu.settings",
+)
 
 app = Celery("menu")
 
-app.config_from_object("django.conf:settings", namespace="CELERY")
+app.config_from_object(
+    "django.conf:settings",
+    namespace="CELERY",
+)
 
 app.autodiscover_tasks()
