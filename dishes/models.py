@@ -48,13 +48,12 @@ class Dish(models.Model):
         self.category.update_dish_count()
 
     def delete(self, *args, **kwargs):
-        """
-        Delete the dish and update the
-        dish count in its category
-        """
         category = self.category
         super(Dish, self).delete(*args, **kwargs)
         category.update_dish_count()
+
+    def update(self):
+        self.category.update_dish_count()
 
     def __str__(self):
         return f"{self.name} - {self.price}"
