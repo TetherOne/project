@@ -1,6 +1,8 @@
-from django.db import models
+from profiles.models import ClientProfile
 
 from dishes.models import Dish
+
+from django.db import models
 
 
 class Cart(models.Model):
@@ -11,6 +13,6 @@ class Cart(models.Model):
         on_delete=models.CASCADE,
     )
     profile = models.ForeignKey(
-        "profiles.ClientProfile",
+        ClientProfile,
         on_delete=models.CASCADE,
     )
