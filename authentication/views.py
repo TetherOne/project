@@ -82,6 +82,7 @@ class MyLoginView(LoginView):
     redirect_authenticated_user = True
 
 
+
 class MyPasswordResetView(PasswordResetView):
 
     template_name = "authentication/password_reset_form.html"
