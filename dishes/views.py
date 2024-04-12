@@ -9,7 +9,7 @@ from dishes.serializers import DishSerializer
 from rest_framework.viewsets import ModelViewSet
 
 from dishes.models import DishImages
-from dishes.models import Category
+from dishes.models import DishCategory
 from dishes.models import DishInfo
 from dishes.models import Dish
 
@@ -63,10 +63,10 @@ class DishInfoViewSet(PermissionViewSet, ModelViewSet):
 class DishCategoryViewSet(PermissionViewSet, ModelViewSet):
 
     serializer_class = DishCategorySerializer
-    queryset = Category.objects.all()
+    queryset = DishCategory.objects.all()
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [
-        "category",
+        "name",
     ]
 
 

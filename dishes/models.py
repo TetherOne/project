@@ -25,8 +25,8 @@ class Dish(models.Model):
     name = models.CharField(max_length=255)
     description = models.TextField()
     price = models.DecimalField(max_digits=10, decimal_places=0)
-    category_id = models.ForeignKey(
-        "Category",
+    category = models.ForeignKey(
+        "DishCategory",
         on_delete=models.CASCADE,
         related_name="dishes",
     )
@@ -45,6 +45,16 @@ class Dish(models.Model):
         super(Dish, self).save(*args, **kwargs)
         if not hasattr(self, "dishinfo"):
             DishInfo.objects.create(dish=self)
+        self.category.update_dish_count()
+
+    def delete(self, *args, **kwargs):
+        """
+        Delete the dish and update the
+        dish count in its category
+        """
+        category = self.category
+        super(Dish, self).delete(*args, **kwargs)
+        category.update_dish_count()
 
     def __str__(self):
         return f"{self.name} - {self.price}"
@@ -79,6 +89,14 @@ class DishImages(models.Model):
     )
 
 
-class Category(models.Model):
+class DishCategory(models.Model):
 
     name = models.CharField(max_length=255)
+    dish_count = models.IntegerField(default=0)
+
+    def update_dish_count(self):
+        self.dish_count = self.dishes.count()
+        self.save()
+
+    def __str__(self):
+        return f"{self.name}"

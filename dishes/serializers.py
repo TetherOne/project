@@ -2,7 +2,7 @@ from rest_framework import serializers
 
 from dishes.models import DishImages
 from dishes.models import DishInfo
-from dishes.models import Category
+from dishes.models import DishCategory
 from dishes.models import Dish
 
 
@@ -20,7 +20,7 @@ class DishSerializer(serializers.ModelSerializer):
 
 class DishCategorySerializer(serializers.ModelSerializer):
     class Meta:
-        model = Category
+        model = DishCategory
         fields = "__all__"
 
 

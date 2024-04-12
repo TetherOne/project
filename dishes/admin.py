@@ -1,4 +1,4 @@
-from dishes.models import Category
+from dishes.models import DishCategory
 from dishes.models import Dish
 
 from django.contrib import admin
@@ -21,7 +21,7 @@ class DishAdmin(admin.ModelAdmin):
     ordering = ("id",)
 
 
-@admin.register(Category)
+@admin.register(DishCategory)
 class CategoryAdmin(admin.ModelAdmin):
     list_display = ("name",)
     list_display_links = ("name",)
