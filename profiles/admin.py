@@ -7,7 +7,34 @@ from django.contrib import admin
 class ClientProfileAdmin(admin.ModelAdmin):
 
     list_display = (
+        "id",
         "name",
         "surname",
         "father_name",
+        "created_at",
+    )
+    list_display_links = (
+        "id",
+        "name",
+        "surname",
+        "father_name",
+    )
+    search_fields = (
+        "id",
+        "name",
+        "surname",
+        "father_name",
+    )
+    list_filter = (
+        "name",
+        "surname",
+        "father_name",
+        "created_at",
+    )
+    ordering = (
+        "id",
+        "name",
+        "surname",
+        "father_name",
+        "created_at",
     )
