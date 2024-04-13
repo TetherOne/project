@@ -1,0 +1,55 @@
+services:
+  wed-app:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/menu
+    environment:
+      - DB_HOST=database
+      - DB_NAME=menu-project
+      - DB_USER=postgres
+      - DB_PASSWORD=qwerty
+      - DB_PORT=5432
+    command: >
+      sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    depends_on:
+      - database
+      - redis
+#      - rabbitmq
+#      - worker
+
+  database:
+    image: postgres:14.6-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=menu-project
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=qwerty
+
+  redis:
+    image: redis:7.0.5-alpine
+    hostname: redis
+
+#  worker:
+#    build:
+#      context: .
+#    hostname: worker
+#    entrypoint: celery
+#    command: -A menu worker -l info --pool=solo
+#    volumes:
+#      - .:/menu
+#
+#  rabbitmq:
+#    image: rabbitmq:3-management-alpine
+#    hostname: rabbitmq
+#    restart: always
+#    environment:
+#      - RABBITMQ_DEFAULT_USER=guest
+#      - RABBITMQ_DEFAULT_PASS=guest
+#    volumes:
+#      - ./rabbitmq:/var/lib/rabbitmq
+#    ports:
+#      - 15672:15672
+#      - 5672:5672

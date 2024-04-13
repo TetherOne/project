@@ -9,7 +9,7 @@ from cart.models import Cart, CartDish
 
 class CartViewSet(viewsets.ModelViewSet):
 
-    queryset = Cart.objects.all()
+    queryset = Cart.objects.prefetch_related("profile").all()
     serializer_class = CartSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [
