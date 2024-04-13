@@ -1,10 +1,10 @@
 from django_filters.rest_framework import DjangoFilterBackend
 
-from cart.serializers import CartSerializer
+from cart.serializers import CartSerializer, CartDishSerializer
 
 from rest_framework import viewsets
 
-from cart.models import Cart
+from cart.models import Cart, CartDish
 
 
 class CartViewSet(viewsets.ModelViewSet):
@@ -13,6 +13,16 @@ class CartViewSet(viewsets.ModelViewSet):
     serializer_class = CartSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [
-        "dish",
         "profile",
+    ]
+
+
+class CartDishViewSet(viewsets.ModelViewSet):
+
+    queryset = CartDish.objects.all()
+    serializer_class = CartDishSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = [
+        "cart_id",
+        "dish_id",
     ]
