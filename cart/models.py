@@ -7,12 +7,23 @@ from django.db import models
 
 class Cart(models.Model):
 
-    count = models.PositiveIntegerField(default=1)
+    profile = models.OneToOneField(
+        ClientProfile,
+        on_delete=models.CASCADE,
+    )
+
+    def __str__(self):
+        return f"{self.profile}"
+
+class CartDish(models.Model):
+
+    cart = models.ForeignKey(
+        Cart,
+        on_delete=models.CASCADE,
+        related_name='cart_dishes',
+    )
     dish = models.ForeignKey(
         Dish,
         on_delete=models.CASCADE,
     )
-    profile = models.ForeignKey(
-        ClientProfile,
-        on_delete=models.CASCADE,
-    )
+    quantity = models.PositiveIntegerField(default=1)
