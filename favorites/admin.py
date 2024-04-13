@@ -17,10 +17,14 @@ class FavoritesAdmin(admin.ModelAdmin):
     )
     search_fields = (
         "profile__name",
+        "profile__surname",
+        "profile__father_name",
         "dish__name",
     )
     list_filter = (
-        "profile",
+        "profile__name",
+        "profile__surname",
+        "profile__father_name",
         "dish",
     )
     ordering = ("id",)
