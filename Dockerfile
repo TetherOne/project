@@ -1,4 +1,4 @@
-FROM python:3.9-alpine3.16
+FROM python:3.11.4-slim
 
 COPY requirements.txt /temp/requirements.txt
 
@@ -9,9 +9,3 @@ COPY menu /menu
 WORKDIR /menu
 
 EXPOSE 8000
-
-RUN apk add postgresql-client build-base postgresql-dev
-
-RUN adduser --disabled-password menu-user
-
-USER menu-user
