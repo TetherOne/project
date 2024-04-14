@@ -17,6 +17,8 @@ services:
     depends_on:
       - database
       - redis
+      - rabbitmq
+      - worker
 
   database:
     image: postgres:15
@@ -30,34 +32,29 @@ services:
     image: redis:7
     hostname: redis
 
-#  worker:
-#    build:
-#      context: .
-#    hostname: worker
-#    entrypoint: celery
-#    command: -A menu worker -l info --pool=solo
-#    volumes:
-#      - .:/menu
-#
-#  rabbitmq:
-#    image: rabbitmq:3-management-alpine
-#    hostname: rabbitmq
-#    restart: always
-#    environment:
-#      - RABBITMQ_DEFAULT_USER=guest
-#      - RABBITMQ_DEFAULT_PASS=guest
-#    volumes:
-#      - ./rabbitmq:/var/lib/rabbitmq
-#    ports:
-#      - 15672:15672
-#      - 5672:5672
-#rabbitmq:
-#    image: rabbitmq:3.10.7-management
-#    hostname: rabbitmq
-#    restart: always
-#    environment:
-#      - RABBITMQ_DEFAULT_USER=rmuser
-#      - RABBITMQ_DEFAULT_PASS=rmpassword
-#      - RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS=-rabbit disk_free_limit 2147483648
-#    ports:
-#      - 15672:15672
+  rabbitmq:
+    hostname: rabbitmq
+    image: rabbitmq:3-management
+    restart: on-failure
+    healthcheck:
+      test: rabbitmq-diagnostics -q ping
+      interval: 30s
+      timeout: 30s
+      retries: 3
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: on-failure
+    command: celery -A menu worker -l info
+    volumes:
+      - .:/menu
+    links:
+      - rabbitmq
+    depends_on:
+      rabbitmq:
+        condition: service_healthy

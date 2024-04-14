@@ -11,7 +11,11 @@ os.environ.setdefault(
     "menu.settings",
 )
 
-app = Celery("menu")
+app = Celery(
+    "menu",
+    broker='amqp://guest:guest@rabbitmq:5672',
+    backend='rpc://',
+)
 
 app.config_from_object(
     "django.conf:settings",
