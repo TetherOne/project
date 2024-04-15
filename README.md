@@ -62,6 +62,10 @@ docker-compose build
 ```
 docker-compose up
 ```
+#### Создайте superuser для создания блюд в меню
+```
+docker exec -it menu-wed-app-1 python manage.py createsuperuser
+```
 #### Перейдите в браузер по ссылке:
 ```
 http://127.0.0.1:8000/api/v1/
