@@ -28,3 +28,9 @@ class CartDish(models.Model):
         on_delete=models.CASCADE,
     )
     quantity = models.PositiveIntegerField(default=1)
+
+    class Meta:
+        unique_together = (
+            "cart",
+            "dish",
+        )

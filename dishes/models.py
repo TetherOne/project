@@ -27,7 +27,8 @@ class Dish(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=0)
     category = models.ForeignKey(
         "DishCategory",
-        on_delete=models.CASCADE,
+        on_delete=models.SET_NULL,
+        null=True,
         related_name="dishes",
     )
     preview = models.ImageField(
