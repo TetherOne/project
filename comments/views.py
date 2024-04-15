@@ -11,7 +11,7 @@ class CommentViewSet(ModelViewSet):
     queryset = Comment.objects.prefetch_related(
         "dish",
         "author",
-    )
+    ).all()
     serializer_class = CommentSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [
