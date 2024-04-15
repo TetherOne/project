@@ -15,6 +15,7 @@ from dishes.models import Dish
 
 
 class PermissionViewSet(ModelViewSet):
+
     permission_classes_by_action = {
         "create": [IsAdminUser],
         "update": [IsAdminUser],

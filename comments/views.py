@@ -8,6 +8,7 @@ from comments.models import Comment
 
 
 class CommentViewSet(ModelViewSet):
+
     queryset = Comment.objects.prefetch_related(
         "dish",
         "author",
