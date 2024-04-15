@@ -1,6 +1,7 @@
 from rest_framework.routers import DefaultRouter
 
-from cart.views import CartViewSet, CartDishViewSet
+from cart.views import CartDishViewSet
+from cart.views import CartViewSet
 
 from django.urls import include
 from django.urls import path

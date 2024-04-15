@@ -8,8 +8,8 @@ from dishes.serializers import DishSerializer
 
 from rest_framework.viewsets import ModelViewSet
 
-from dishes.models import DishImages
 from dishes.models import DishCategory
+from dishes.models import DishImages
 from dishes.models import DishInfo
 from dishes.models import Dish
 

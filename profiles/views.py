@@ -1,9 +1,9 @@
 from django_filters.rest_framework import DjangoFilterBackend
 
-from rest_framework.permissions import IsAdminUser
-
 from profiles.serializers import UserRegistrationSerializer
 from profiles.serializers import ClientSerializer
+
+from rest_framework.permissions import IsAdminUser
 
 from rest_framework.viewsets import ModelViewSet
 
