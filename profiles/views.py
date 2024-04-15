@@ -32,8 +32,8 @@ class PermissionViewSet(ModelViewSet):
 
 class ClientViewSet(ModelViewSet):
 
-    serializer_class = ClientSerializer
     queryset = ClientProfile.objects.all()
+    serializer_class = ClientSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [
         "user",

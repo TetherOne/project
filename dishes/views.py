@@ -34,8 +34,8 @@ class PermissionViewSet(ModelViewSet):
 
 class DishViewSet(PermissionViewSet, ModelViewSet):
 
-    serializer_class = DishSerializer
     queryset = Dish.objects.all()
+    serializer_class = DishSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [
         "name",
@@ -48,8 +48,8 @@ class DishViewSet(PermissionViewSet, ModelViewSet):
 
 class DishInfoViewSet(PermissionViewSet, ModelViewSet):
 
-    serializer_class = DishInfoSerializer
     queryset = DishInfo.objects.all()
+    serializer_class = DishInfoSerializer
     ordering_fields = [
         "weight",
         "proteins",
@@ -62,8 +62,8 @@ class DishInfoViewSet(PermissionViewSet, ModelViewSet):
 
 class DishCategoryViewSet(PermissionViewSet, ModelViewSet):
 
-    serializer_class = DishCategorySerializer
     queryset = DishCategory.objects.all()
+    serializer_class = DishCategorySerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [
         "name",
@@ -72,8 +72,8 @@ class DishCategoryViewSet(PermissionViewSet, ModelViewSet):
 
 class DishImagesViewSet(PermissionViewSet, ModelViewSet):
 
-    serializer_class = DishImagesSerializer
     queryset = DishImages.objects.all()
+    serializer_class = DishImagesSerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = [
         "dish",

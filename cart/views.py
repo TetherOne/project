@@ -11,9 +11,7 @@ from cart.models import Cart
 
 class CartViewSet(viewsets.ModelViewSet):
 
-    queryset = Cart.objects.prefetch_related(
-        "profile",
-    ).all()
+    queryset = Cart.objects.select_related("profile").all()
     serializer_class = CartSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [
