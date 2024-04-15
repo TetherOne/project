@@ -36,9 +36,7 @@ class ClientViewSet(ModelViewSet):
     queryset = ClientProfile.objects.select_related("user").all()
     serializer_class = ClientSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = [
-        "user",
-    ]
+    filterset_fields = ["user"]
 
 
 class UserViewSet(ModelViewSet):
