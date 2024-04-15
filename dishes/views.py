@@ -73,7 +73,9 @@ class DishCategoryViewSet(PermissionViewSet, ModelViewSet):
 
 class DishImagesViewSet(PermissionViewSet, ModelViewSet):
 
-    queryset = DishImages.objects.all()
+    queryset = DishImages.objects.prefetch_related(
+        "dish",
+    ).all()
     serializer_class = DishImagesSerializer
     filter_backends = [DjangoFilterBackend]
     filter_fields = [

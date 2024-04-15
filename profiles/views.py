@@ -13,6 +13,7 @@ from profiles.models import ClientProfile
 
 
 class PermissionViewSet(ModelViewSet):
+
     permission_classes_by_action = {
         "create": [IsAdminUser],
         "update": [IsAdminUser],
@@ -32,7 +33,7 @@ class PermissionViewSet(ModelViewSet):
 
 class ClientViewSet(ModelViewSet):
 
-    queryset = ClientProfile.objects.all()
+    queryset = ClientProfile.objects.select_related("user").all()
     serializer_class = ClientSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [

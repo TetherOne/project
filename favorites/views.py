@@ -9,7 +9,10 @@ from favorites.models import Favorites
 
 class FavoritesViewSet(ModelViewSet):
 
-    queryset = Favorites.objects.all()
+    queryset = Favorites.objects.prefetch_related(
+        "dish",
+        "profile",
+    ).all()
     serializer_class = FavoritesSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [

@@ -21,7 +21,10 @@ class CartViewSet(viewsets.ModelViewSet):
 
 class CartDishViewSet(viewsets.ModelViewSet):
 
-    queryset = CartDish.objects.all()
+    queryset = CartDish.objects.prefetch_related(
+        "cart",
+        "dish",
+    ).all()
     serializer_class = CartDishSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [
