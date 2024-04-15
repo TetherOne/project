@@ -42,7 +42,8 @@ class CustomUserCreationForm(UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         """
-        Убирает повторный ввод пароля при регистрации
+        Removes repeated password entry
+        during registration
         """
         super().__init__(*args, **kwargs)
         self.fields.pop("password2")
@@ -70,7 +71,6 @@ class CustomPasswordResetForm(PasswordResetForm):
     """
     Form for recovery password via mail
     """
-
     def send_mail(
         self,
         subject_template_name,

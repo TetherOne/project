@@ -5,8 +5,12 @@ from cart.models import Cart, CartDish
 
 class CartSerializer(serializers.ModelSerializer):
 
-    name = serializers.ReadOnlyField(source="profile.name")
-    surname = serializers.ReadOnlyField(source="profile.surname")
+    name = serializers.ReadOnlyField(
+        source="profile.name",
+    )
+    surname = serializers.ReadOnlyField(
+        source="profile.surname",
+    )
     father_name = serializers.ReadOnlyField(
         source="profile.father_name",
     )

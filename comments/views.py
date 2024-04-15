@@ -8,8 +8,10 @@ from comments.models import Comment
 
 
 class CommentViewSet(ModelViewSet):
-
-    queryset = Comment.objects.all()
+    queryset = Comment.objects.prefetch_related(
+        "dish",
+        "author",
+    )
     serializer_class = CommentSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = [

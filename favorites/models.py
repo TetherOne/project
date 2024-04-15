@@ -11,3 +11,9 @@ class Favorites(models.Model):
         "dishes.Dish",
         on_delete=models.CASCADE,
     )
+
+    class Meta:
+        unique_together = (
+            'profile',
+            'dish',
+        )

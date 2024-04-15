@@ -28,6 +28,7 @@
                         {{ form.password }}
                     </div>
                     <button data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg btn-block" type="submit">Login</button>
+                    <div>Забыли пароль?<a href="{% url 'authentication:password_reset' %}">Восстановить пароль</a></div>
                 </form>
 
           </div>

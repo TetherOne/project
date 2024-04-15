@@ -25,7 +25,8 @@ class Migration(migrations.Migration):
             model_name="cart",
             name="profile",
             field=models.OneToOneField(
-                on_delete=django.db.models.deletion.CASCADE, to="profiles.clientprofile"
+                on_delete=django.db.models.deletion.CASCADE,
+                to="profiles.clientprofile",
             ),
         ),
         migrations.CreateModel(
@@ -52,7 +53,8 @@ class Migration(migrations.Migration):
                 (
                     "dish",
                     models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, to="dishes.dish"
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="dishes.dish",
                     ),
                 ),
             ],
