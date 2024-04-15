@@ -13,8 +13,8 @@ os.environ.setdefault(
 
 app = Celery(
     "menu",
-    broker='amqp://guest:guest@rabbitmq:5672',
-    backend='rpc://',
+    broker="amqp://guest:guest@rabbitmq:5672",
+    backend="rpc://",
 )
 
 app.config_from_object(

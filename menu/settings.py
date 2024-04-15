@@ -23,15 +23,6 @@ from config import EMAIL_USE_SSL
 from config import EMAIL_PORT
 from config import EMAIL_HOST
 
-from config import DB_PASSWORD
-from config import DB_HOST
-from config import DB_PORT
-from config import DB_NAME
-from config import DB_USER
-
-from config import REDIS_HOST
-from config import REDIS_PORT
-
 from pathlib import Path
 
 
@@ -193,4 +184,4 @@ EMAIL_ADMIN = EMAIL_HOST_USER
 RECAPTCHA_PUBLIC_KEY = RECAPTCHA_PUBLIC_KEY
 RECAPTCHA_PRIVATE_KEY = RECAPTCHA_PRIVATE_KEY
 
-CELERY_BROKER_URL = 'amqp://guest:guest@rabbitmq:5672'
+CELERY_BROKER_URL = "amqp://guest:guest@rabbitmq:5672"

@@ -14,6 +14,6 @@ class Favorites(models.Model):
 
     class Meta:
         unique_together = (
-            'profile',
-            'dish',
+            "profile",
+            "dish",
         )

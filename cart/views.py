@@ -1,10 +1,12 @@
 from django_filters.rest_framework import DjangoFilterBackend
 
-from cart.serializers import CartSerializer, CartDishSerializer
+from cart.serializers import CartDishSerializer
+from cart.serializers import CartSerializer
 
 from rest_framework import viewsets
 
-from cart.models import Cart, CartDish
+from cart.models import CartDish
+from cart.models import Cart
 
 
 class CartViewSet(viewsets.ModelViewSet):
