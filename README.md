@@ -51,15 +51,15 @@
 ```
 git clone https://github.com/TetherOne/project
 ```
-#### 2. Соберите docker-compose:
+#### Соберите docker-compose:
 ```
 docker-compose build
 ```
-#### 3. Запустите docker-compose:
+#### Запустите docker-compose:
 ```
 docker-compose up
 ```
-#### 4. Перейдите в браузер по ссылке:
+#### Перейдите в браузер по ссылке:
 ```
 http://127.0.0.1:8000/api/v1/
 ```
