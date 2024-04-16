@@ -38,9 +38,7 @@ class DishViewSet(PermissionViewSet, ModelViewSet):
     queryset = Dish.objects.all()
     serializer_class = DishSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = [
-        "name",
-    ]
+    filterset_fields = ["name"]
     ordering_fields = [
         "name",
         "price",
@@ -66,9 +64,7 @@ class DishCategoryViewSet(PermissionViewSet, ModelViewSet):
     queryset = DishCategory.objects.all()
     serializer_class = DishCategorySerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = [
-        "name",
-    ]
+    filterset_fields = ["name"]
 
 
 class DishImagesViewSet(PermissionViewSet, ModelViewSet):
@@ -78,6 +74,4 @@ class DishImagesViewSet(PermissionViewSet, ModelViewSet):
     ).all()
     serializer_class = DishImagesSerializer
     filter_backends = [DjangoFilterBackend]
-    filter_fields = [
-        "dish",
-    ]
+    filter_fields = ["dish"]

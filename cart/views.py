@@ -14,9 +14,7 @@ class CartViewSet(viewsets.ModelViewSet):
     queryset = Cart.objects.select_related("profile").all()
     serializer_class = CartSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = [
-        "profile",
-    ]
+    filterset_fields = ["profile"]
 
 
 class CartDishViewSet(viewsets.ModelViewSet):
